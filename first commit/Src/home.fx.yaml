@@ -6,7 +6,7 @@ home As screen:
         Size: =40
         Text: ="Guia de Estudos PL400"
         Width: =Parent.Width
-        Y: =150
+        Y: =142
         ZIndex: =1
 
     Button2 As button:
