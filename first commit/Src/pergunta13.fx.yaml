@@ -1,0 +1,154 @@
+pergunta13 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&
+        UpdateContext({VarPop_VerRespostaCorreta: false})&& Reset(Radio1_7)
+
+    Container1_12 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_12 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: |-
+                ="Você desenvolve e implanta uma solução do Power Apps. As seguintes alterações devem ser feitas na solução:
+                
+                • Exclua uma coluna de dados.
+                • Modifique várias vistas.
+                • Adicione vários gráficos aos painéis.
+                
+                Você precisa reimplantar o aplicativo. O que você deve fazer?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_12 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 13 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_7 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =214
+            Items: |-
+                =[
+                "A) Atualize a solução.(update the solution)"
+                ,
+                "B) Atualize a solução.(upgrade the solution)"
+                ,
+                "C) Crie uma nova solução. (create the solution)"
+                ,
+                "D) Corrija a solução.(patch the solution)"
+                ] 
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_36 As button:
+            OnSelect: |-
+                =Reset(Radio1_7)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta12)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_37 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_7
+                .Selected.Value=
+                "B) Atualize a solução.(upgrade the solution)"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_38 As button:
+            OnSelect: |-
+                =Reset(Radio1_7)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta14)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_12 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="B) Atualize a solução.(upgrade the solution)
+                
+                Esta é a opção padrão e atualiza sua solução para a versão mais recente e acumula todos os patches anteriores em uma única etapa.
+                Se você escolher atualizar, os componentes que não estão na solução mais recente não serão excluídos e permanecerão no sistema. Não parece ideal, pois uma das etapas necessárias na pergunta é excluir uma coluna."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1_12 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_7)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

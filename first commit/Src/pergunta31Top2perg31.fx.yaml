@@ -1,0 +1,181 @@
+pergunta31Top2perg31 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox: true}) && Reset(Checkbox1A_1) && Reset(Checkbox1B_1) && Reset(Checkbox1C_1) && Reset(Checkbox1D_1) && UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_30 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_30 As label:
+            Font: =Font.Arial
+            Height: =269
+            Size: =20
+            Text: |-
+                ="Você está desenvolvendo um aplicativo baseado em modelo para uma empresa.O aplicativo deve mapear registros filho para um registro pai.Você precisa usar o recurso de mapeamento de coluna para configurar o aplicativo.Quaissão as duas ações que você pode executar? Cada resposta correta apresenta uma solução completa.NOTA: Cada seleção correta vale um ponto.
+                "
+            Width: =Parent.Width-30
+            X: =15
+            Y: =50
+            ZIndex: =1
+
+        Label2_30 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 31 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_90 As button:
+            OnSelect: |-
+                =Reset(Checkbox1A_2)&&
+                Reset(Checkbox1B_2)&&
+                Reset(Checkbox1C_2)&&
+                Reset(Checkbox1D_2)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta30Top2perg30)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_91 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1A_2.Value And Checkbox1C_2.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1A_2)&&
+                Reset(Checkbox1B_2)&&
+                Reset(Checkbox1C_2)&&
+                Reset(Checkbox1D_2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_92 As button:
+            OnSelect: |-
+                =Reset(Checkbox1D_2)&& Reset(Checkbox1D_2)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta32Top2perg35)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_30 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =264
+            Text: |-
+                ="Para configurar o mapeamento de colunas em um aplicativo baseado em modelo, você pode executar as seguintes ações:
+                
+                A. Mapeie o valor de uma coluna Opções na tabela filho para o valor de uma coluna Opções na tabela pai.
+                C. Mapeie o valor das colunas nos formulários de criação rápida e principal da tabela filho para o valor das mesmas colunas na tabela pai.
+                
+                Essas ações permitem que você configure corretamente o mapeamento de colunas entre registros pai e filho, garantindo que os dados sejam transferidos e sincronizados conforme necessário."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_30 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Checkbox1A_2 As checkbox:
+            Height: =55
+            Text: ="A) Mapeie o valor de uma coluna Opções na tabela filho para o valor de uma coluna Opções na tabela pai."
+            Visible: =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =334
+            ZIndex: =9
+
+        Checkbox1B_2 As checkbox:
+            Height: =55
+            Text: |+
+                ="B) Mapeie o valor de uma coluna na tabela pai que usa valores de coluna da tabela filho."
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =400
+            ZIndex: =10
+
+        Checkbox1C_2 As checkbox:
+            Height: =42
+            Text: |+
+                ="C) Mapeie o valor das colunas nos formulários de criação rápida e principal da tabela filho para o valor das mesmas colunas na tabela pai."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =473
+            ZIndex: =11
+
+        Checkbox1D_2 As checkbox:
+            Height: =42
+            Text: |
+                ="D) Mapeie o valor de uma única linha de coluna de texto na tabela filho para o valor de uma coluna de moeda no registro pai. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =536
+            ZIndex: =12
+

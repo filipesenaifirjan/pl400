@@ -1,0 +1,143 @@
+pergunta40Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_39 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_39 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 40 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_117 As button:
+            OnSelect: |-
+                =Reset(Radio2_3)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta39Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_118 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_3
+                .Selected.Value=
+                "C) Registrar o plug-in na etapa de pós-operação do evento de criação e definir a execução como assíncrona.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_119 As button:
+            OnSelect: |-
+                =Reset(Radio2_3)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta41Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_39 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =248
+            Text: |-
+                =" Registrar o plug-in na etapa de pós-operação do evento de criação e definir a execução como assíncrona é a abordagem correta porque 
+                permite que o plug-in seja executado após a conclusão da operação principal, garantindo que todas as transações relacionadas ao registro 
+                sejam concluídas antes da execução do plug-in. Isso é crucial para operações que não precisam interferir no fluxo transacional principal 
+                e podem ser processadas em segundo plano, melhorando a eficiência e a escalabilidade do sistema sem impactar a experiência do usuário."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_39 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_3 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você está desenvolvendo um plug-in para o Dataverse que precisa ser executado de forma assíncrona após a criação de um registro. Qual das seguintes etapas você deve seguir para registrar o plug-in corretamente?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =84
+            ZIndex: =9
+
+        Radio2_3 As radio:
+            Height: =213
+            Items: |+
+                =[
+                "A) Registrar o plug-in na etapa de pré-validação do evento de criação.",
+                "B) Registrar o plug-in na etapa de pré-operação do evento de criação.",
+                "C) Registrar o plug-in na etapa de pós-operação do evento de criação e definir a execução como assíncrona.",
+                "D) Registrar o plug-in na etapa de pós-operação do evento de criação e definir a execução como síncrona." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

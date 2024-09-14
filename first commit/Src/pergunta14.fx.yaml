@@ -1,0 +1,147 @@
+pergunta14 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&
+        UpdateContext({VarPop_VerRespostaCorreta: false})&& Reset(Radio1_8)
+
+    Container1_13 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_13 As label:
+            Font: =Font.Arial
+            Height: =260
+            Size: =20
+            Text: |-
+                ="  Uma empresa projeta a integração de dados com um sistema externo usando tabelas virtuais.
+                  Você precisa implementar as tabelas virtuais.
+                  Solução: implemente um provedor OData v4 como a fonte de dados.
+                  A solução atende ao objetivo?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =50
+            ZIndex: =1
+
+        Label2_13 As label:
+            Font: =Font.Arial
+            Height: =39
+            Size: =20
+            Text: ="Pergunta 14 de 50"
+            Width: =356
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_8 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =214
+            Items: |-
+                =[
+                "A) Sim"
+                ,
+                "B) Não"
+                
+                ] 
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_39 As button:
+            OnSelect: |-
+                =Reset(Radio1_8)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta13)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_40 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_8
+                .Selected.Value=
+                "A) Sim"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_41 As button:
+            OnSelect: |-
+                =Reset(Radio1_8)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta15)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_13 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                =" A) Sim 
+                
+                O Dataverse inclui um provedor de dados Odata v4 que pode ser usado para se conectar a fontes de dados que dão suporte ao padrão aberto OData v4."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1_13 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_8)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

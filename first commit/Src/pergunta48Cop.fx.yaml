@@ -1,0 +1,142 @@
+pergunta48Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_47 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_47 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 48 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_141 As button:
+            OnSelect: |-
+                =Reset(Radio2_11)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta47Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_142 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_11
+                .Selected.Value=
+                "A) Utilizar a função 'Filter' para filtrar os dados com base nos critérios de pesquisa.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_143 As button:
+            OnSelect: |-
+                =Reset(Radio2_11)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta49Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_47 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =248
+            Text: |-
+                =" C) Registrar o plug-in na etapa de pós-operação do evento de criação e definir a execução como assíncrona.
+                
+                *Pós-operação: Registrar o plug-in na etapa de pós-operação garante que ele será executado após a conclusão do evento de criação do registro. Isso é importante porque você deseja que o plug-in seja acionado somente depois que o registro tenha sido totalmente criado e salvo no Dataverse.
+                
+                * Execução assíncrona: Definir a execução como assíncrona permite que o plug-in seja executado em segundo plano, sem bloquear a operação principal. Isso é útil para operações que podem levar mais tempo e não precisam ser concluídas imediatamente, melhorando a performance e a experiência do usuário."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_47 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_11 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você está desenvolvendo um aplicativo Canvas no Power Apps que precisa exibir dados de uma tabela do Dataverse com base em critérios de pesquisa específicos. Qual das seguintes funções você deve utilizar para garantir que os dados sejam filtrados corretamente?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =80
+            ZIndex: =9
+
+        Radio2_11 As radio:
+            Height: =213
+            Items: |-
+                =[
+                    "A) Utilizar a função 'Filter' para filtrar os dados com base nos critérios de pesquisa.",
+                    "B) Utilizar a função 'Search' para buscar os dados com base nos critérios de pesquisa.",
+                    "C) Utilizar a função 'LookUp' para buscar os dados com base nos critérios de pesquisa",
+                    "D) Utilizar a função 'Collect'para carregar todos os dados e, em seguida, filtrar os dados localmente."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

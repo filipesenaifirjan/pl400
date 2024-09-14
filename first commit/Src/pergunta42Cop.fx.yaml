@@ -1,0 +1,144 @@
+pergunta42Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_41 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20
+        PaddingTop: =5
+        Width: =Parent.Width-20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_41 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 42 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_123 As button:
+            OnSelect: |-
+                =Reset(Radio2_5)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta41Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_124 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_5
+                .Selected.Value=
+                "B) Utilizar a ação “Start and wait for an approval” e configurar múltiplos aprovadores em sequência.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =507
+            Y: =678
+            ZIndex: =5
+
+        Button1_125 As button:
+            OnSelect: |-
+                =Reset(Radio2_5)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta43Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_41 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =248
+            Text: |-
+                =" Utilizar a ação “Start and wait for an approval” e configurar múltiplos aprovadores em sequência é a abordagem 
+                correta porque permite que cada etapa de aprovação seja concluída antes de passar para a próxima, garantindo um 
+                controle rigoroso e ordenado do processo de aprovação. Isso assegura que cada aprovador tenha a oportunidade de revisar
+                 e aprovar a solicitação antes que ela avance, mantendo a integridade e a responsabilidade em cada etapa do fluxo de trabalho.
+                  Além disso, essa configuração facilita a rastreabilidade e a auditoria do processo, essencial para conformidade e governança."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_41 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_5 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você precisa implementar um processo de aprovação no Power Automate que envolva múltiplos aprovadores em sequência. Qual das seguintes ações você deve realizar para configurar corretamente o fluxo de aprovação?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =80
+            ZIndex: =9
+
+        Radio2_5 As radio:
+            Height: =213
+            Items: |+
+                =[
+                "A) Utilizar a ação “Start and wait for an approval” e configurar múltiplos aprovadores em paralelo.",
+                "B) Utilizar a ação “Start and wait for an approval” e configurar múltiplos aprovadores em sequência.",
+                "C) Utilizar a ação “Send an email with options” para enviar solicitações de aprovação.",
+                "D) Utilizar a ação “Create an approval” e configurar múltiplos aprovadores em sequência." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

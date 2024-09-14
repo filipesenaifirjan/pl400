@@ -1,0 +1,147 @@
+pergunta22top2perg3 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&
+        UpdateContext({VarPop_VerRespostaCorreta: false})&& Reset(Radio1_15)
+
+    Container1_21 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_21 As label:
+            Font: =Font.Arial
+            Height: =320
+            Size: =20
+            Text: |-
+                ="Uma universidade implementa o Dynamics 365 Sales. Vários departamentos usam registros de oportunidades para concorrer a financiamento de projetos dentro de seus próprios departamentos. Você configura o sistema para garantir que cada departamento só possa trabalhar em seus próprios registros.
+                Funcionários em vários departamentos geralmente precisam trabalhar juntos em uma oportunidade. Os funcionários relatam que não conseguem ver oportunidades de outros departamentos.
+                Você precisa garantir que os funcionários de mais de um departamento possam trabalhar nas mesmas oportunidades quando necessário.
+                Solução: use modelos de equipe de acesso e dê acesso aos membros dos dois departamentos.
+                A solução atende ao objetivo?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_21 As label:
+            Font: =Font.Arial
+            Height: =39
+            Size: =20
+            Text: ="Pergunta 22 de 50"
+            Width: =356
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_15 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =214
+            Items: |-
+                =[
+                "A) Sim"
+                ,
+                "B) Não"
+                
+                ] 
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =440
+            ZIndex: =3
+
+        Button1_63 As button:
+            OnSelect: |-
+                =Reset(Radio1_15)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta21top2perg2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_64 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_15
+                .Selected.Value=
+                "B) Não"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_65 As button:
+            OnSelect: |-
+                =Reset(Radio1_15)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta23top2perg5)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_21 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =278
+            Text: |-
+                ="A. Sim
+                Usar modelos de equipe de acesso no Dynamics 365 Sales é uma solução adequada para permitir que funcionários de diferentes departamentos colaborem em oportunidades específicas. Com equipes de acesso, você pode compartilhar registros de oportunidades com membros de diferentes departamentos sem conceder acesso a todos os registros da organização. Isso atende ao objetivo de permitir a colaboração interdepartamental em oportunidades específicas enquanto mantém o controle sobre o acesso aos dados."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_21 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_15)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

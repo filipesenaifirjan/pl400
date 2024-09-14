@@ -1,0 +1,152 @@
+pergunta12 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&UpdateContext({VarPop_VerRespostaCorreta: false})&& Reset(Radio1_6)
+
+    Container1_11 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_11 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: |-
+                ="Uma empresa desenvolve um novo plug-in do Microsoft Dataverse que gerencia a mensagem de atualização de uma entidade.
+                A lógica do plug-in requer acesso às colunas de registro antes do início da operação e deve comparar as colunas com os valores pós-atualização.
+                Você precisa modificar o design da solução para acessar as informações.
+                O que você deve fazer?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_11 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 12 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_6 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |-
+                =[
+                "A) Adicione o código ao plug-in para ler o registro da coleção InputParameters."
+                ,
+                "B) Registre uma pré-imagem usando a Ferramenta de Registro de Plug-in. Adicione o código ao plug-in para ler a imagem da coleção PreEntityImages."
+                ,
+                "C) Registre uma pós-imagem usando a Ferramenta de Registro de Plug-in. Adicione o código ao plug-in para ler a imagem da coleção PostEntityImages."
+                ,
+                "D) Adicione o código ao plug-in para consultar os dados do Dataverse usando a chamada à API com base na ID do registro."
+                ] 
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_33 As button:
+            OnSelect: |-
+                =Reset(Radio1_6)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta11)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_34 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_6
+                .Selected.Value=
+                "B) Registre uma pré-imagem usando a Ferramenta de Registro de Plug-in. Adicione o código ao plug-in para ler a imagem da coleção PreEntityImages."
+                
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_35 As button:
+            OnSelect: |-
+                =Reset(Radio1_6)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta13)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_11 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =214
+            Text: |-
+                ="B) Registre uma pré-imagem usando a Ferramenta de Registro de Plug-in. Adicione o código ao plug-in para ler a imagem da coleção PreEntityImages.
+                
+                Para acessar as informações das colunas de registro antes do início da operação e compará-las com os valores pós-atualização, a melhor abordagem é registrar uma pré-imagem usando a Ferramenta de Registro de Plug-in e adicionar o código ao plug-in para ler a imagem da coleção PreEntityImages.
+                Portanto, a opção correta é:
+                B. Registre uma pré-imagem usando a Ferramenta de Registro de Plug-in. Adicione o código ao plug-in para ler a imagem da coleção PreEntityImages."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_11 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_6)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

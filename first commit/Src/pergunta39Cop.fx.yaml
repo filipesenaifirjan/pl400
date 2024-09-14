@@ -1,0 +1,145 @@
+pergunta39Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_38 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_38 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 39 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_114 As button:
+            OnSelect: |-
+                =Reset(Radio2_2)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta38Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_115 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_2
+                .Selected.Value=
+                "C) Conector do Dataverse com o gatilho “When a record is created or updated.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_116 As button:
+            OnSelect: |-
+                =Reset(Radio2_2)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta40Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_38 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |
+                ="C)Conector do Dataverse com o gatilho “When a record is created or updated 
+                
+                Conector do Dataverse: Este conector é especificamente projetado para interagir com entidades do Dataverse, garantindo uma integração perfeita e eficiente.
+                
+                
+                Gatilho “When a record is created or updated”: Este gatilho é ideal porque ele monitora tanto a criação quanto a atualização de registros. Isso significa que o fluxo de trabalho será acionado sempre que um novo registro for criado ou um registro existente for atualizado, cobrindo ambas as situações mencionadas na sua necessidade.”."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_38 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_2 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você precisa criar um fluxo de trabalho no Power Automate que seja acionado quando um registro é criado ou atualizado em uma entidade do Dataverse. Qual conector e gatilho você deve usar para garantir que o fluxo de trabalho seja acionado corretamente?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =70
+            ZIndex: =9
+
+        Radio2_2 As radio:
+            Height: =213
+            Items: |+
+                =[
+                "A) Conector do SharePoint com o gatilho “When an item is created or modified.",
+                "B) Conector do Dataverse com o gatilho “When a record is created, updated or deleted.",
+                "C) Conector do Dataverse com o gatilho “When a record is created or updated.",
+                "D) Conector do Dynamics 365 com o gatilho “When a record is created or updated." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

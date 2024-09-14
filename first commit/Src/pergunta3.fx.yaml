@@ -1,0 +1,182 @@
+pergunta3 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_2 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_2 As label:
+            Font: =Font.Arial
+            Height: =269
+            Size: =20
+            Text: |-
+                ="Você planeja criar um aplicativo de tela para gerenciar grandes conjuntos de registros. Os usuários filtrarão e classificarão os dados.
+                Você deve implementar a delegação no aplicativo de tela para mitigar possíveis problemas de desempenho.
+                Você precisa recomendar fontes de dados para o aplicativo.Quais
+                são as duas fontes de dados que você deve recomendar? Cada resposta correta apresenta uma solução completa.
+                NOTA: Cada seleção correta vale um ponto."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =84
+            ZIndex: =1
+
+        Label2_2 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 3 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_6 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_4)&&
+                Reset(Checkbox1_5)&&
+                Reset(Checkbox1_6)&&
+                Reset(Checkbox1_7)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_7 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1_4.Value And Checkbox1_5.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1_4)&&
+                Reset(Checkbox1_5)&&
+                Reset(Checkbox1_6)&&
+                Reset(Checkbox1_7)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_8 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_7)&& Reset(Checkbox1_7)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta4)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_2 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="Ao criar relatórios de grandes fontes de dados (talvez milhões de registros), você deseja minimizar o tráfego de rede.
+                Trabalhar com grandes conjuntos de dados requer o uso de fontes de dados e fórmulas que podem ser delegadas. É a única maneira de manter seu aplicativo com bom desempenho e garantir que os usuários possam acessar todas as informações de que precisam. A delegação é suportada apenas para certas fontes de dados tabulares.
+                Essas fontes de dados tabulares são as mais populares e suportam delegação:
+                ✑ Common Data Service
+                ✑ SharePoint
+                ✑ SQL Server"
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1_2 As icon.Cancel:
+            Height: =50
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =46
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Checkbox1_4 As checkbox:
+            Text: |+
+                ="A) Servidor SQL"
+                
+            Visible: =VarPop_checkbox
+            Width: =400
+            X: =30
+            Y: =360
+            ZIndex: =9
+
+        Checkbox1_5 As checkbox:
+            Text: |+
+                =" B) Serviço de Dados Comuns"
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =400
+            X: =30
+            Y: =420
+            ZIndex: =10
+
+        Checkbox1_6 As checkbox:
+            Text: |+
+                ="C) Azure Data Factory"
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =400
+            X: =30
+            Y: =480
+            ZIndex: =11
+
+        Checkbox1_7 As checkbox:
+            Text: |
+                ="D) Armazenamento de Tabelas do Azure "
+            Visible: |
+                =VarPop_checkbox
+            Width: =400
+            X: =30
+            Y: =540
+            ZIndex: =12
+

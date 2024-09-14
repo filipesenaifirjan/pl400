@@ -1,0 +1,152 @@
+pergunta11 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&UpdateContext({VarPop_VerRespostaCorreta: false})&&  Reset(Radio1_5)
+
+    Container1_10 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_10 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: |-
+                ="Você é um criador do Power Apps criando um bot de chat para um site.
+                
+                O bot de chat deve reconhecer atributos geográficos para habilitar funcionalidades adicionais.
+                
+                Você precisa recomendar um recurso.
+                
+                O que você deve recomendar?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =52
+            ZIndex: =1
+
+        Label2_10 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 11 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_5 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |-
+                =[
+                "A) Tópico de fallback"
+                ,
+                "B) Fluxo do Power Automate"
+                ,
+                "C) Conformidade com o serviço de bot"
+                ,
+                "D) Preenchimento de slots (ou ranhuras)"
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_30 As button:
+            OnSelect: |-
+                =Reset(Radio1_5)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta10)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_31 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_5
+                .Selected.Value=
+                "D) Preenchimento de ranhuras"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_32 As button:
+            OnSelect: |-
+                =Reset(Radio1_5)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta12)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_10 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                =" D) Preenchimento de slots (ou ranhuras)
+                
+                  Para que o bot de chat reconheça atributos geográficos e habilite funcionalidades adicionais, você deve recomendar o recurso Preenchimento de ranhuras. Este recurso permite que o bot colete e utilize informações específicas, como atributos geográficos, para personalizar as respostas e funcionalidades oferecidas aos usuários"
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1_10 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_5)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

@@ -1,0 +1,148 @@
+pergunta32Top2perg35 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_31 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_31 As label:
+            Font: =Font.Arial
+            Height: =267
+            Size: =20
+            Text: ="Você está mapeando dados de um sistema ERP (planejamento de recursos empresariais) para o Microsoft Dataverse.Você deve fazer referência ao Nome e E-mail do sistema ERP durante o mapeamento para garantir que os registros sejam exclusivos.Você precisa criar uma chave alternativa que faça referência às colunas Nome e Email.Como você deve criar a chave?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =72
+            ZIndex: =1
+
+        Label2_31 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 32 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_21 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |+
+                =[
+                "A) Adicione uma função de comando do Power Apps.."
+                ,
+                "B) Use Power Fx ."
+                ,
+                "C) Adicione coluna à tabela Conta no Dataverse."
+                ,
+                "D) Crie uma chave na tabela Conta no Dataverse."
+                ]
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_93 As button:
+            OnSelect: |-
+                =Reset(Radio1_21)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta31Top2perg31)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_94 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_21
+                .Selected.Value=
+                "D) Crie uma chave na tabela Conta no Dataverse."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_95 As button:
+            OnSelect: |-
+                =Reset(Radio1_21)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta33Top2perg36)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_31 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D. Crie uma chave na tabela Conta no Dataverse.
+                
+                Para garantir que os registros sejam exclusivos ao mapear dados de um sistema ERP para o Microsoft Dataverse, você deve criar uma chave alternativa que faça referência às colunas Nome e Email. Isso é feito criando uma chave na tabela Conta no Dataverse. Essa chave alternativa garantirá a unicidade dos registros com base nas colunas especificadas.
+                "
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_31 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_21)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

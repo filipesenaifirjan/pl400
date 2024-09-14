@@ -1,0 +1,186 @@
+pergunta7 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox: true}) && Reset(Checkbox1A) && Reset(Checkbox1B) && Reset(Checkbox1C) && Reset(Checkbox1D) && UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_6 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_6 As label:
+            Font: =Font.Arial
+            Height: =250
+            Size: =20
+            Text: |-
+                ="Uma organização usa um portal do Power Apps voltado para o público.
+                Você precisa alterar o layout de uma página da web específica.
+                Quais são as duas maneiras possíveis de atingir a meta? Cada resposta correta apresenta uma solução completa.
+                NOTA: Cada seleção correta vale um ponto."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =64
+            ZIndex: =1
+
+        Label2_6 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 7 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_18 As button:
+            OnSelect: |-
+                =Reset(Checkbox1A)&&
+                Reset(Checkbox1B)&&
+                Reset(Checkbox1C)&&
+                Reset(Checkbox1D)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_19 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1A.Value And Checkbox1D.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1A)&&
+                Reset(Checkbox1B)&&
+                Reset(Checkbox1C)&&
+                Reset(Checkbox1D)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_20 As button:
+            OnSelect: |-
+                =Reset(Checkbox1D)&& Reset(Checkbox1D)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta8)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_6 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =264
+            Text: |-
+                ="A: O aplicativo Gerenciamento do Portal permite que você execute ações de configuração avançadas em seu portal.
+                1. Abra o aplicativo Gerenciamento do Portal.2
+                . Vá para Portais > Páginas da Web.
+                3. Para editar uma página da Web existente, selecione o nome da página da Web.
+                4. Insira os valores apropriados nos campos.
+                5. Selecione Salvar e fechar.
+                
+                D: Para usar o editor WYSIWYG:
+                1. Edite o portal para abri-lo no Studio de portais do Power Apps.
+                2. Selecione a página na qual deseja adicionar o componente.
+                3. Selecione um elemento editável na tela."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =7
+
+        Icon1_6 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =350
+            ZIndex: =8
+
+        Checkbox1A As checkbox:
+            Text: |+
+                ="A) Selecione o aplicativo Gerenciamento do Portal e, em seguida, selecione Editar."
+                
+            Visible: =VarPop_checkbox
+            Width: =772
+            X: =30
+            Y: =340
+            ZIndex: =9
+
+        Checkbox1B As checkbox:
+            Text: |+
+                ="B) Selecione o aplicativo Gerenciamento do Portal e, em seguida, selecione Reproduzir."
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =400
+            ZIndex: =10
+
+        Checkbox1C As checkbox:
+            Text: |+
+                ="C) Selecione o aplicativo do portal e, em seguida, selecione Gerenciar."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =460
+            ZIndex: =11
+
+        Checkbox1D As checkbox:
+            Text: |
+                ="D) Selecione o aplicativo do portal e, em seguida, selecione Editar. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =520
+            ZIndex: =12
+

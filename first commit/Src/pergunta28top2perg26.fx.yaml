@@ -1,0 +1,225 @@
+pergunta28top2perg26 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&&UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_27 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_27 As label:
+            Font: =Font.Arial
+            Height: =231
+            Size: =20
+            Text: |-
+                ="Uma empresa de viagens tem um ambiente de CDS (Common Data Service).
+                A empresa exige o seguinte:
+                ✑ Entidades personalizadas que rastreiam quais regiões os clientes viajaram.
+                As datas em que seus clientes viajaram para essas regiões.
+                Você precisa criar as entidades e relacionamentos para atender aos requisitos.
+                Quais são as três ações que você deve realizar? Cada resposta correta apresenta parte da solução.
+                NOTA: Cada seleção correta vale um ponto."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_27 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 28 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_81 As button:
+            OnSelect: |-
+                =Reset(CheckboxA_3)&&
+                Reset(CheckboxB_3)&&
+                Reset(CheckboxC_3)&&
+                Reset(CheckboxD_3)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta27top2perg25)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_82 As button:
+            OnSelect: |-
+                =If (
+                    CheckboxD_3.Value And CheckboxC_3.Value And CheckboxF_5.Value,
+                    Notify (
+                        "Certa resposta!",
+                        NotificationType.Success,
+                        1900
+                    ) And UpdateContext ({VarPop_checkbox: false}) And UpdateContext ({VarPop_VerRespostaCorreta: true}),
+                    Notify (
+                        "Resposta Errada!",
+                        NotificationType.Error,
+                        1900
+                    ) And UpdateContext ({VarPop_checkbox: false}) And UpdateContext ({VarPop_VerRespostaCorreta: true})
+                ) && Reset(CheckboxA_3) && Reset(CheckboxB_3) && Reset(CheckboxC_3) && Reset(CheckboxD_3) && Reset(CheckboxE_4)&&Reset(CheckboxF_5)&&Reset(CheckboxH_7)&& Reset(CheckboxG_6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_83 As button:
+            OnSelect: |-
+                =Reset(CheckboxA_3)&& Reset(CheckboxB_3)&& Reset(CheckboxC_3) &&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})
+                &&
+                Navigate(pergunta29top2perg29)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_27 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =294
+            Text: |-
+                ="Para atender aos requisitos da empresa de viagens e criar as entidades e relacionamentos necessários no Common Data Service (CDS), você deve realizar as seguintes ações:
+                
+                C. Crie uma entidade de interseção chamada ContactRegion e crie relações 1:N para Contact e Region.
+                
+                D. No formulário principal de ContactRegion, adicione campos de pesquisa para Contato e Região e um campo de data para a data da visita.
+                
+                F. Crie a entidade Região.
+                
+                Essas ações permitirão que você rastreie quais regiões os clientes viajaram e as datas dessas viagens, criando uma estrutura adequada para armazenar e relacionar essas informações. "
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_27 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        CheckboxA_3 As checkbox:
+            Height: =40
+            Text: |+
+                ="A) Crie uma relação N:N de Contato para a entidade Região."
+                
+            Visible: =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =300
+            ZIndex: =9
+
+        CheckboxB_3 As checkbox:
+            Height: =40
+            Text: |+
+                =" B) Crie uma relação 1:N da entidade de interseção ContactRegion e da Região."
+                
+                
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =340
+            ZIndex: =10
+
+        CheckboxC_3 As checkbox:
+            Height: =40
+            Text: |+
+                ="C) Crie uma entidade de interseção chamada ContactRegion e crie relações 1:N para Contact e Region."
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =380
+            ZIndex: =11
+
+        CheckboxD_3 As checkbox:
+            Height: =40
+            Text: |+
+                ="D) No formulário principal de ContactRegion, adicione campos de pesquisa para Contato e Região e um campo de data para a data da visita. "
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =420
+            ZIndex: =12
+
+        CheckboxE_4 As checkbox:
+            Height: =40
+            Text: |+
+                ="E) Crie uma relação 1:N de Contato para a entidade Região. "
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =460
+            ZIndex: =13
+
+        CheckboxF_5 As checkbox:
+            Height: =40
+            Text: |+
+                ="F) Crie a entidade Região."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =500
+            ZIndex: =14
+
+        CheckboxG_6 As checkbox:
+            Height: =40
+            Text: |+
+                ="G) No formulário principal de ContactRegion, adicione uma subgrade para exibir as informações do país. "
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =540
+            ZIndex: =15
+
+        CheckboxH_7 As checkbox:
+            Height: =40
+            Text: |+
+                ="H) Crie uma entidade de interseção chamada ContactRegion e crie relações N:1 para Contact e Region. "
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-60
+            X: =30
+            Y: =580
+            ZIndex: =16
+

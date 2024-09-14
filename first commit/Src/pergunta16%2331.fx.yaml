@@ -1,0 +1,149 @@
+"'pergunta16#31' As screen":
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&
+        UpdateContext({VarPop_VerRespostaCorreta: false})&& Reset(Radio1_10)
+
+    Container1_15 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_15 As label:
+            Font: =Font.Arial
+            Height: =232
+            Size: =20
+            Text: |-
+                ="Uma empresa projeta a integração de dados com um sistema externo usando tabelas virtuais.
+                 Você precisa implementar as tabelas virtuais.
+                 Solução: use uma tabela que tenha um GUID como chave primária.
+                 A solução atende ao objetivo?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_15 As label:
+            Font: =Font.Arial
+            Height: =39
+            Size: =20
+            Text: ="Pergunta 16 de 50"
+            Width: =356
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_10 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =214
+            Items: |-
+                =[
+                "A) Sim"
+                ,
+                "B) Não"
+                
+                ] 
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =380
+            ZIndex: =3
+
+        Button1_45 As button:
+            OnSelect: |-
+                =Reset(Radio1_10)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta15)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_46 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_10
+                .Selected.Value=
+                "A) Sim"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_47 As button:
+            OnSelect: |-
+                =Reset(Radio1_10)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate('pergunta17#33')
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_15 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                =" Sim, a solução atende ao objetivo.
+                
+                Usar uma tabela que tenha um GUID (Globally Unique Identifier) como chave primária é uma prática comum e recomendada para tabelas virtuais no Microsoft Dataverse. Isso garante que cada registro tenha um identificador único, o que é essencial para a integração de dados com sistemas externos.
+                
+                Portanto, a resposta correta é: A. Sim."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_15 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_10)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

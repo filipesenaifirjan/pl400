@@ -1,0 +1,143 @@
+pergunta37Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_36 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_36 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 37 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_108 As button:
+            OnSelect: |-
+                =//Reset(Radio1_26)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta36top2perg41)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_109 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2
+                .Selected.Value=
+                "A) Utilizar um conector personalizado no Power Automate configurado com as credenciais OAuth 2.0 e armazenar o token de acesso em uma variável de ambiente."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_110 As button:
+            OnSelect: |-
+                =//Reset(Radio1_26)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta38Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_36 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="Resposta correta: A) Utilizar um conector personalizado no Power Automate configurado com as credenciais OAuth 2.0 
+                e armazenar o token de acesso em uma variável de ambiente.
+                
+                Essa abordagem garante que o fluxo de trabalho possa autenticar de forma segura e eficiente, 
+                utilizando as práticas recomendadas para autenticação OAuth 2.0."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_36 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7 As label:
+            Height: =221
+            Size: =20
+            Text: ="Você está desenvolvendo um fluxo de trabalho no Power Automate que precisa integrar dados de um sistema externo via API REST. O sistema externo requer autenticação OAuth 2.0. Qual das seguintes abordagens é a mais adequada para garantir que o fluxo de trabalho possa autenticar e acessar os dados do sistema externo de forma segura e eficiente?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =76
+            ZIndex: =9
+
+        Radio2 As radio:
+            Height: =253
+            Items: |
+                =[
+                "A) Utilizar um conector personalizado no Power Automate configurado com as credenciais OAuth 2.0 e armazenar o token de acesso em uma variável de ambiente.",
+                "B) Configurar um conector padrão do Power Automate com autenticação básica (usuário e senha) e armazenar as credenciais em um cofre de segredos do Azure Key Vault.",
+                "C) Criar um fluxo de trabalho separado para obter o token OAuth 2.0 e armazená-lo em uma variável global, reutilizando-o em outros fluxos de trabalho conforme necessário.",
+                "D) Utilizar um conector personalizado no Power Automate configurado com autenticação de chave de API e armazenar a chave de API em uma variável de ambiente."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =310
+            ZIndex: =10
+

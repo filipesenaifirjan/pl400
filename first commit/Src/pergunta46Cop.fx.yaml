@@ -1,0 +1,144 @@
+pergunta46Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_45 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_45 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 46 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_135 As button:
+            OnSelect: |-
+                =Reset(Radio2_9)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta45Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_136 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_9
+                .Selected.Value=
+                "B) Registrar o plug-in na etapa de pré-operação do evento de exclusão.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_137 As button:
+            OnSelect: |-
+                =Reset(Radio2_9)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta47Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_45 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =248
+            Text: |-
+                =" C) Registrar o plug-in na etapa de pós-operação do evento de criação e definir a execução como assíncrona.
+                
+                *Pós-operação: Registrar o plug-in na etapa de pós-operação garante que ele será executado após a conclusão do evento de criação do registro. Isso é importante porque você deseja que o plug-in seja acionado somente depois que o registro tenha sido totalmente criado e salvo no Dataverse.
+                
+                * Execução assíncrona: Definir a execução como assíncrona permite que o plug-in seja executado em segundo plano, sem bloquear a operação principal. Isso é útil para operações que podem levar mais tempo e não precisam ser concluídas imediatamente, melhorando a performance e a experiência do usuário."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =1170
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_45 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_9 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você está desenvolvendo um plug-in para o Dataverse que precisa ser executado antes da exclusão de um registro. Qual das seguintes etapas você deve seguir para registrar o plug-in corretamente?"
+            Width: =1265
+            X: =37
+            Y: =80
+            ZIndex: =9
+
+        Radio2_9 As radio:
+            Height: =213
+            Items: |+
+                =[
+                "A) Registrar o plug-in na etapa de pré-validação do evento de exclusão.",
+                "B) Registrar o plug-in na etapa de pré-operação do evento de exclusão.",
+                "C) Registrar o plug-in na etapa de pós-operação do evento de exclusão.",
+                "D) Registrar o plug-in na etapa de pós-operação do evento de exclusão e definir a execução como assíncrona." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =1276
+            X: =16
+            Y: =350
+            ZIndex: =10
+

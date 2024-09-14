@@ -1,0 +1,139 @@
+pergunta44Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_43 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_43 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 44 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_129 As button:
+            OnSelect: |-
+                =Reset(Radio2_7)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta43Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_130 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_7
+                .Selected.Value=
+                "B) Use webhooks e defina o modo de execução como síncrono.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_131 As button:
+            OnSelect: |-
+                =Reset(Radio2_7)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta45Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_43 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =248
+            Text: ="Se você usar o modo de execução síncrona, qualquer falha será relatada novamente ao usuário do aplicativo com uma caixa de diálogo de erro do ponto de extremidade indisponível. O Barramento de Serviço do Azure permite somente etapas assíncronas. Se você usar o modo de execução assíncrona, um trabalho será criado para capturar o sucesso ou a falha da operação e todos erros serão registrados nos trabalhos do sistema. O recurso de encaminhamento automático permite o encadeamento da fila ou assinatura para outra fila ou tópico que faça parte do mesmo namespace."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_43 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_7 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você desenvolve uma solução para integrar dados do Dynamics 365 Customer Engagement (local) ao código personalizado hospedado em serviços externos.Você precisa garantir que, se ocorrer alguma falha durante a execução, a falha será relatada ao usuário do aplicativo imediatamente.O que você deve fazer?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =80
+            ZIndex: =9
+
+        Radio2_7 As radio:
+            Height: =210
+            Items: |+
+                =[
+                "A) Use o Barramento de Serviço do Azure e defina o modo de execução como síncrono.",
+                "B) Use webhooks e defina o modo de execução como síncrono.",
+                "C) Use webhooks e defina o modo de execução como assíncrono.",
+                "D) Use o Barramento de Serviço do Azure e habilite o recurso de encaminhamento automático." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

@@ -1,0 +1,144 @@
+pergunta43Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_42 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_42 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 43 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_126 As button:
+            OnSelect: |-
+                =Reset(Radio2_6)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta42Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_127 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_6
+                .Selected.Value=
+                "B) Utilizar um conector personalizado configurado com autenticação OAuth 2.0.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_128 As button:
+            OnSelect: |-
+                =Reset(Radio2_6)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta44Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_42 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =248
+            Text: |-
+                =" Utilizar um conector personalizado configurado com autenticação OAuth 2.0 é a abordagem mais segura porque OAuth 2.0
+                 é um protocolo de autorização robusto que permite acesso seguro aos recursos da API sem expor as credenciais do usuário. 
+                 Ele utiliza tokens de acesso que podem ser configurados para expirar após um determinado período, minimizando o risco de 
+                 comprometimento. Além disso, a criação de um conector personalizado permite que você configure a autenticação de acordo 
+                 com os requisitos específicos da API externa, garantindo uma integração segura e eficiente."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =1170
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_42 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_6 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você está desenvolvendo um aplicativo Canvas no Power Apps que precisa acessar dados de uma API REST externa. Qual das seguintes abordagens é a mais segura para autenticar e acessar os dados da API?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =80
+            ZIndex: =9
+
+        Radio2_6 As radio:
+            Height: =213
+            Items: |+
+                =[
+                "A) Armazenar as credenciais da API diretamente no código do aplicativo.",
+                "B) Utilizar um conector personalizado configurado com autenticação OAuth 2.0.",
+                "C) Utilizar um conector padrão com autenticação básica (usuário e senha).",
+                "D) Armazenar as credenciais da API em uma variável global no aplicativo." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

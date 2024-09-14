@@ -1,0 +1,153 @@
+pergunta4 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_3 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_3 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: |-
+                ="Uma empresa planeja criar um aplicativo de processamento de pedidos. Quando os pedidos são criados, o aplicativo executa uma lógica de negócios complexa e se integra a vários sistemas externos.
+                Os pedidos com um grande número de itens de linha podem levar até seis minutos para serem concluídos. O processamento de cada pedido deve ser concluído em uma operação para evitar deixar registros em um estado incompleto.
+                Você precisa recomendar uma solução para a empresa.
+                O que você deve recomendar?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =48
+            ZIndex: =1
+
+        Label2_3 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 4 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_1 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |+
+                =[
+                "A) Um fluxo de trabalho assíncrono que usa uma atividade de fluxo de trabalho personalizada"
+                ,
+                "B) Um fluxo de trabalho em tempo real que usa uma ação personalizada"
+                ,
+                "C) um webhook que se conecta a uma função do Azure"
+                ,
+                "D) Um plug-in assíncrono"
+                ]
+                
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =428
+            ZIndex: =3
+
+        Button1_9 As button:
+            OnSelect: |-
+                =Reset(Radio1_1)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta3)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_10 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_1
+                .Selected.Value=
+                "C) um webhook que se conecta a uma função do Azure"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Radio1_1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_11 As button:
+            OnSelect: |-
+                =Reset(Radio1_1)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta5)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_3 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="C) um webhook que se conecta a uma função do Azure 
+                
+                Ações personalizadas têm um tempo limite de 2 minutos. Isso pode ser implementado usando webhook e função do Azure, onde a função do Azure usa operações em lote Web API que permite operações transacionais e pode ser executada por mais de 2 minutos"
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1_3 As icon.Cancel:
+            Height: =50
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =46
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

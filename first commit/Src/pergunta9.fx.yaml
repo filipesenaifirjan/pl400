@@ -1,0 +1,189 @@
+pergunta9 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox: true}) && Reset(Checkbox1_8) && Reset(Checkbox1_9) && Reset(Checkbox1_10) && Reset(Checkbox1_11) && UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_8 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_8 As label:
+            Font: =Font.Arial
+            Height: =274
+            Size: =20
+            Text: |-
+                ="Você está criando um aplicativo de tela para recuperar informações de entrada do usuário do Microsoft Azure Active Directory (Azure AD) quando alguém pesquisa informações sobre um usuário final.
+                Você cria uma Função do Azure para recuperar as informações necessárias usando JSON.
+                Você precisa garantir que o aplicativo funcione corretamente.
+                Quais são as duas ações que você deve executar? Cada resposta correta apresenta parte da solução.
+                NOTA: Cada seleção correta vale um ponto."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =50
+            ZIndex: =1
+
+        Label2_8 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 9 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_24 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_8)&&
+                Reset(Checkbox1_9)&&
+                Reset(Checkbox1_10)&&
+                Reset(Checkbox1_11)&&
+                Reset(Checkbox1_12)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta8)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_25 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1_12.Value And Checkbox1_9.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1_8)&&
+                Reset(Checkbox1_9)&&
+                Reset(Checkbox1_10)&&
+                Reset(Checkbox1_11)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_26 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_9)&& Reset(Checkbox1_12)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta10)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_8 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                =" Para garantir que o aplicativo de tela funcione corretamente ao recuperar informações do Azure Active Directory (Azure AD) usando uma Função do Azure, 
+                 você deve:
+                 B) Crie um conector personalizado usando a API de Função do Azure.
+                 E) Crie uma definição de API para a Função do Azure.
+                 Essas ações permitem que o aplicativo de tela se comunique de forma eficaz com a Função do Azure para recuperar e processar os dados necessários."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1_8 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Checkbox1_8 As checkbox:
+            Text: |
+                ="A) Crie um fluxo do Power Automate para importar dados."
+            Visible: =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =320
+            ZIndex: =9
+
+        Checkbox1_9 As checkbox:
+            Text: |+
+                ="B) Crie um conector personalizado usando a API do Azure Function."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =380
+            ZIndex: =10
+
+        Checkbox1_10 As checkbox:
+            Text: |
+                ="C) Use o designer de aplicativos no centro de administração do Power Platform."
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =440
+            ZIndex: =11
+
+        Checkbox1_11 As checkbox:
+            Text: |
+                ="D) Use o Barramento de Serviço do Azure."
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =500
+            ZIndex: =12
+
+        Checkbox1_12 As checkbox:
+            Text: |
+                =" E) Crie uma definição de API para a Função do Azure."
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =560
+            ZIndex: =13
+

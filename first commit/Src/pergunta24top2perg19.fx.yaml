@@ -1,0 +1,184 @@
+pergunta24top2perg19 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox: true}) && Reset(Checkbox1A_1) && Reset(Checkbox1B_1) && Reset(Checkbox1C_1) && Reset(Checkbox1D_1) && UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_23 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_23 As label:
+            Font: =Font.Arial
+            Height: =269
+            Size: =20
+            Text: |-
+                ="Uma empresa de serviços financeiros usa o Common Data Service (CDS) para desenvolver soluções. A empresa usa instâncias de desenvolvimento e produção.
+                Você precisa mover soluções da instância de desenvolvimento para a instância de produção.
+                Quais são as duas maneiras possíveis de atingir esse objetivo? Cada resposta correta apresenta uma solução completa.
+                NOTA: Cada seleção correta vale um ponto.
+                "
+            Width: =Parent.Width-30
+            X: =15
+            Y: =84
+            ZIndex: =1
+
+        Label2_23 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 24 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_69 As button:
+            OnSelect: |-
+                =Reset(Checkbox1A_1)&&
+                Reset(Checkbox1B_1)&&
+                Reset(Checkbox1C_1)&&
+                Reset(Checkbox1D_1)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta23top2perg5)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_70 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1A_1.Value And Checkbox1B_1.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1A_1)&&
+                Reset(Checkbox1B_1)&&
+                Reset(Checkbox1C_1)&&
+                Reset(Checkbox1D_1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_71 As button:
+            OnSelect: |-
+                =Reset(Checkbox1D_1)&& Reset(Checkbox1D_1)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta25top2perg21)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_23 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =264
+            Text: |-
+                ="A: Na instância de desenvolvimento, faça alterações nas soluções implantadas na instância de produção, exporte as soluções como soluções gerenciadas e 
+                 importe as soluções gerenciadas para a instância de produção.
+                 
+                 B: Você pode aplicar patches a soluções gerenciadas ou não gerenciadas e incluir apenas alterações em entidades e ativos de entidade relacionados. Os patches não contêm nenhum componente de sistema não personalizado ou relacionamentos dos quais ele dependa porque esses componentes já existem na organização implantada. Em algum momento do ciclo de desenvolvimento, você pode acumular todos os patches em uma nova versão da solução para substituir a solução original da qual os patches foram criados."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_23 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Checkbox1A_1 As checkbox:
+            Height: =70
+            Text: |+
+                ="A) Na instância de desenvolvimento, faça alterações nas soluções implantadas na instância de produção, exporte as soluções como soluções gerenciadas e importe as soluções gerenciadas para a instância de produção"
+                
+            Visible: =VarPop_checkbox
+            Width: =Parent.Width-30
+            X: =15
+            Y: =360
+            ZIndex: =9
+
+        Checkbox1B_1 As checkbox:
+            Height: =70
+            Text: |+
+                ="B) Na instância de desenvolvimento, realce a solução na qual você deseja fazer alterações, selecione Clonar um patch, faça alterações, exporte a solução e importe a solução para a instância de produção."
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-30
+            X: =15
+            Y: =420
+            ZIndex: =10
+
+        Checkbox1C_1 As checkbox:
+            Height: =70
+            Text: |+
+                ="C) Exporte todas as soluções gerenciadas da instância de desenvolvimento e importe as soluções para a instância de produção."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-30
+            X: =15
+            Y: =480
+            ZIndex: =11
+
+        Checkbox1D_1 As checkbox:
+            Height: =70
+            Text: |
+                ="D) Na instância de produção, importe soluções com o mesmo número de versão ou superior ao atualizar soluções. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =Parent.Width-30
+            X: =15
+            Y: =540
+            ZIndex: =12
+

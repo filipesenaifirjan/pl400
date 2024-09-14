@@ -1,0 +1,155 @@
+pergunta36top2perg41 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_35 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_35 As label:
+            Font: =Font.Arial
+            Height: =285
+            Size: =20
+            Text: |-
+                ="Um banco de dados do Microsoft Dataverse contém duas tabelas personalizadas chamadas TableA e TableB. As tabelas são configuradas com o seguinte:
+                • Uma relação um-para-muitos é configurada entre a TabelaA e a Tabela B.
+                • Uma pesquisa para a TabelaA aparece em um formulário na Tabela B.
+                • Ambas as tabelas são componentes de uma solução não gerenciada.
+                • Ambas as tabelas são componentes em um relatório do Power BI.Você recebe um erro ao tentar excluir TableA.Você precisa excluir a tabela.O que você deve fazer?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =58
+            ZIndex: =1
+
+        Label2_35 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 36 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_25 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =217
+            Items: |+
+                =[
+                "A) Remova a Tabela A do relatório do Power BI."
+                ,
+                "B) Remova a relação entre a Tabela A e a Tabela B."
+                ,
+                "C) Remova a Tabela A da solução não gerenciada.",
+                
+                "D) Remova o campo de pesquisa para a Tabela A no formulário Tabela B."
+                
+                
+                ]
+                
+            PaddingBottom: =0
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =380
+            ZIndex: =3
+
+        Button1_105 As button:
+            OnSelect: |-
+                =Reset(Radio1_25)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta35top2perg40)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_106 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_25
+                .Selected.Value=
+                "B) Remova a relação entre a Tabela A e a Tabela B."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_107 As button:
+            OnSelect: |-
+                =Reset(Radio1_25)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta37Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_35 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="B. Remova a relação entre a Tabela A e a Tabela B.
+                
+                Para excluir a TabelaA, você precisa primeiro remover a relação um-para-muitos entre a TabelaA e a TabelaB. 
+                Isso ocorre porque a relação impede a exclusão direta da TabelaA enquanto houver dependências."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_35 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_25)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

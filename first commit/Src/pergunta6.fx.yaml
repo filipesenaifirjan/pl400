@@ -1,0 +1,152 @@
+pergunta6 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_5 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_5 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: |-
+                ="Uma empresa está migrando de uma instalação local do Dynamics 365 para uma solução do Power Platform. Você está criando plug-ins para a nova solução.
+                Você precisa registrar os plug-ins.
+                Qual modo de isolamento você deve usar?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =59
+            ZIndex: =1
+
+        Label2_5 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 6 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_2 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |
+                =[
+                "A) Nenhum"
+                ,
+                "B)  GAC (Cache de Assembly Global)"
+                ,
+                "C) Caixa de areia (sandbox)"
+                ,
+                "D) Disco"
+                ]
+            PaddingBottom: =5
+            PaddingLeft: =5
+            PaddingTop: =5
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =378
+            ZIndex: =3
+
+        Button1_15 As button:
+            OnSelect: |-
+                =Reset(Radio1_2)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta5)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_16 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_2
+                .Selected.Value=
+                "C) Caixa de areia (sandbox)"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Radio1_2)&& Reset(Radio1_2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_17 As button:
+            OnSelect: |-
+                =Reset(Radio1_2)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta7)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_5 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D) Sandbox.
+                
+                O Power BI permite insights de dados e melhor tomada de decisão, enquanto o Power Apps permite que todos criem e usem aplicativos que se conectam a dados Você encontrará opções relacionadas ao modo de isolamento e ao local para o assembly. Elas se referem a opções que se aplicam a implantações locais. O Dataverse não está disponível para implantações locais, então você sempre aceitará as opções padrão de SandBox e Database para essas opções."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1_5 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

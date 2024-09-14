@@ -1,0 +1,146 @@
+pergunta1 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: ="""1) Uma empresa gerencia equipamentos de capital para uma concessionária de energia elétrica. A empresa possui um banco de dados SQL Server que contém registros de manutenção do equipamento.Os técnicos que fazem a manutenção do equipamento usam o aplicativo móvel do Dynamics 365 Field Service em tablets para exibir atribuições agendadas. Os técnicos usam um aplicativo de tela para exibir o histórico de manutenção de cada equipamento e atualizar o histórico.Os gerentes usam um painel do Power BI que exibe o Dynamics 365 Field Service e dados de manutenção em tempo real.Devido ao aumento da demanda, os gerentes devem ser capazes de trabalhar em campo como técnicos.Você precisa projetar uma solução que permita que os gerentes trabalhem em uma única tela.O que você deve fazer?"""
+            Width: =Parent.Width-30
+            X: =15
+            Y: =65
+            ZIndex: =1
+
+        Label2 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 1 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |-
+                =[
+                "A) Adicione o aplicativo de histórico de manutenção ao aplicativo Field Service Mobile."
+                ,
+                "B)  Adicione o painel do Power BI do gerenciador ao aplicativo móvel do Field Service."
+                ,
+                "C) Crie um novo aplicativo de tela de manutenção no painel de gerenciamento do Power BI."
+                ,
+                "D) Adicione o aplicativo de histórico de manutenção ao painel do Power BI."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =428
+            ZIndex: =3
+
+        Button1 As button:
+            OnSelect: |-
+                =Reset(Radio1)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(home)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_1 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1
+                .Selected.Value=
+                "D) Adicione o aplicativo de histórico de manutenção ao painel do Power BI."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_2 As button:
+            OnSelect: |-
+                =Reset(Radio1)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D) Adicione o aplicativo de histórico de manutenção ao painel do Power BI.
+                
+                O Power BI permite insights de dados e melhor tomada de decisão, enquanto o Power Apps permite que todos criem e usem aplicativos que se conectam a dados corporativos. Usando o visual do
+                Power Apps, você pode passar dados com reconhecimento de contexto para um aplicativo de tela, que é atualizado em tempo real à medida que você faz alterações em seu relatório. Agora, os usuários do aplicativo podem obter insights de negócios e executar ações diretamente em seus relatórios e dashboards do Power BI."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =7
+
+        Icon1 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

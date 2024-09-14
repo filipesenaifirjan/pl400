@@ -1,0 +1,150 @@
+pergunta27top2perg25 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_26 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_26 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: |-
+                ="Você planeja preencher registros em uma entidade do Microsoft Dataverse que contém um campo de conjunto de opções.
+                O sistema de origem tem o rótulo para o conjunto de opções, mas não o valor inteiro correspondente.
+                Você está usando uma linguagem de programação não .NET.
+                Você precisa encontrar o valor inteiro para o conjunto de opções.
+                O que você deve fazer?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_26 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 27 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_18 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |-
+                =[
+                "A) Use a API Web e use uma solicitação PicklistAttibuteMetadata."
+                ,
+                "B)  Use o serviço Organização e execute uma solicitação RetrieveOptionSetRequest."
+                ,
+                "C) Use a API Web e use uma ação InsertOptionValue."
+                ,
+                "D) Use o serviço Organização e execute uma solicitação RetrieveAttributeRequest."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_78 As button:
+            OnSelect: |-
+                =Reset(Radio1_18)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta26top2perg23)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_79 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_18
+                .Selected.Value=
+                "A) Use a API Web e use uma solicitação PicklistAttibuteMetadata."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_80 As button:
+            OnSelect: |-
+                =Reset(Radio1_18)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta28top2perg26)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_26 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="A. Use a API Web e use uma solicitação PicklistAttibuteMetadata.
+                
+                Para encontrar o valor inteiro correspondente ao rótulo de um conjunto de opções usando uma linguagem de programação não .NET, você deve usar a API Web e fazer uma solicitação PicklistAttributeMetadata. Isso permitirá que você recupere os metadados do conjunto de opções, incluindo os valores inteiros associados aos rótulos."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =1129
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_26 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_18)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

@@ -1,0 +1,140 @@
+pergunta38Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_37 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_37 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 38 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_111 As button:
+            OnSelect: |-
+                =//Reset(Radio1_26)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta37Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_112 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_1
+                .Selected.Value=
+                "A) Utilizar a função Filter para filtrar os dados diretamente na fonte de dados antes de carregá-los no aplicativo."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_113 As button:
+            OnSelect: |-
+                =Reset(Radio2_1)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta39Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_37 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: ="Utilizar a função Filter para filtrar os dados diretamente na fonte de dados antes de carregá-los no aplicativo é a abordagem mais eficiente porque reduz a quantidade de dados transferidos, melhora o desempenho do aplicativo, utiliza melhor os recursos do servidor, oferece uma experiência de usuário mais rápida e aumenta a escalabilidade do aplicativo. Isso garante que apenas os dados necessários sejam carregados, tornando o aplicativo mais ágil e responsivo."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_37 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_1 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você está desenvolvendo um aplicativo Canvas no Power Apps que precisa exibir dados de uma tabela do Dataverse. Qual das seguintes abordagens é a mais eficiente para garantir que os dados sejam carregados rapidamente e que o aplicativo tenha um bom desempenho?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =84
+            ZIndex: =9
+
+        Radio2_1 As radio:
+            Height: =213
+            Items: |+
+                =[
+                "A) Utilizar a função Filter para filtrar os dados diretamente na fonte de dados antes de carregá-los no aplicativo.",
+                "B) Carregar todos os dados da tabela no aplicativo e, em seguida, utilizar a função Filter para exibir apenas os dados necessários.",
+                "C) Utilizar a função Collect para carregar todos os dados da tabela em uma coleção local e, em seguida, utilizar a função Filter para exibir os dados.",
+                "D) Utilizar a função Search para buscar os dados diretamente na de dados e exibi-los no aplicativo." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

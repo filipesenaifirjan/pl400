@@ -1,0 +1,149 @@
+pergunta20top2perg1 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&
+        UpdateContext({VarPop_VerRespostaCorreta: false})&& Reset(Radio1_13)
+
+    Container1_19 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_19 As label:
+            Font: =Font.Arial
+            Height: =320
+            Size: =20
+            Text: |-
+                ="Uma universidade implementa o Dynamics 365 Sales. Vários departamentos usam registros de oportunidades para concorrer a financiamento de projetos dentro de seus próprios departamentos. Você configura o sistema para garantir que cada departamento só possa trabalhar em seus próprios registros.
+                Funcionários em vários departamentos geralmente precisam trabalhar juntos em uma oportunidade. Os funcionários relatam que não conseguem ver oportunidades de outros departamentos.
+                Você precisa garantir que os funcionários de mais de um departamento possam trabalhar nas mesmas oportunidades quando necessário.
+                Solução: use a segurança da hierarquia de cargos e defina os dois departamentos como cargos.
+                A solução atende ao objetivo?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =79
+            ZIndex: =1
+
+        Label2_19 As label:
+            Font: =Font.Arial
+            Height: =39
+            Size: =20
+            Text: ="Pergunta 20 de 50"
+            Width: =356
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_13 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =214
+            Items: |-
+                =[
+                "A) Sim"
+                ,
+                "B) Não"
+                
+                ] 
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =449
+            ZIndex: =3
+
+        Button1_57 As button:
+            OnSelect: |-
+                =Reset(Radio1_13)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate('pergunta19#35')
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_58 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_13
+                .Selected.Value=
+                "A) Sim"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_59 As button:
+            OnSelect: |-
+                =Reset(Radio1_13)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta21top2perg2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_19 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =278
+            Text: |-
+                ="Dois modelos de segurança podem ser usados para hierarquias, a hierarquia Gerente e a hierarquia Posição. A hierarquia Posição permite o acesso a dados entre unidades de negócios. Se você for uma organização financeira, talvez prefira o modelo de hierarquia Gerente, para impedir que os gerentes acessem dados fora de suas unidades de negócios.
+                No entanto, se você fizer parte de uma organização de atendimento ao cliente e quiser que os gerentes acessem casos de serviço tratados em diferentes unidades de negócios, a hierarquia de cargos poderá funcionar melhor para você.
+                Observação: O modelo de segurança de hierarquia é uma extensão dos modelos de segurança existentes que usam unidades de negócios, direitos de acesso, compartilhamento e equipes. Ele pode ser usado em conjunto com todos os outros modelos de segurança existentes. A segurança hierárquica oferece um acesso mais granular aos registros de uma organização e ajuda a reduzir os custos de manutenção.
+                Referência:"
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_19 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_13)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

@@ -1,0 +1,151 @@
+pergunta34top2perg39 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_33 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_33 As label:
+            Font: =Font.Arial
+            Height: =263
+            Size: =20
+            Text: |-
+                ="Você está desenvolvendo um aplicativo do Power Apps para gerenciar registros na tabela Conta no  Microsoft Dataverse.
+                Você deve configurar uma solicitação de API Web para recuperar alterações da tabela.
+                Você precisa configurar o cabeçalho de preferência para a solicitação de API.
+                
+                O que você deve incluir no cabeçalho da solicitação?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =80
+            ZIndex: =1
+
+        Label2_33 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 34 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_23 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =204
+            Items: |+
+                =[
+                "A) odata.nextLink."
+                ,
+                "B) odata.context."
+                ,
+                "C) odata.deltaLink"
+                
+                ]
+                
+            PaddingBottom: =0
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_99 As button:
+            OnSelect: |-
+                =Reset(Radio1_23)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta32Top2perg35)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_100 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_23
+                .Selected.Value=
+                "C) odata.deltaLink"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_101 As button:
+            OnSelect: |-
+                =Reset(Radio1_23)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta35top2perg40)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_33 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="C. odata.deltaLink
+                
+                Para configurar uma solicitação de API Web para recuperar alterações na tabela Conta no Microsoft Dataverse, você deve incluir o cabeçalho de preferência Prefer: odata.track-changes. Isso solicitará que um link delta seja retornado, o que pode ser usado posteriormente para recuperar as alterações da tabela1"
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_33 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_23)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

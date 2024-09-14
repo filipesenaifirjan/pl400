@@ -1,0 +1,165 @@
+"'pergunta19#35' As screen":
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&&UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_18 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_18 As label:
+            Font: =Font.Arial
+            Height: =269
+            Size: =20
+            Text: |-
+                ="Uma empresa tem um formulário de aplicativo baseado em modelo. Muitos usuários usam o formulário.
+                Os usuários afirmam que o formulário demora muito para carregar totalmente.
+                Você precisa avaliar o design do formulário para melhorar o desempenho do carregamento.
+                Quais são os três tipos de controle que você pode usar? Cada resposta correta apresenta uma solução completa.
+                NOTA: Cada seleção correta vale um ponto."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =84
+            ZIndex: =1
+
+        Label2_18 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 19 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_54 As button:
+            OnSelect: |-
+                =Reset(CheckboxA_1)&&
+                Reset(CheckboxB_1)&&
+                Reset(CheckboxC_1)&&
+                Reset(CheckboxD_1)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate('pergunta18#34')
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_55 As button:
+            OnSelect: |-
+                =If (
+                    CheckboxD_1.Value And CheckboxB_1.Value And CheckboxC_1.Value,
+                    Notify (
+                        "Certa resposta!",
+                        NotificationType.Success,
+                        1900
+                    ) And UpdateContext ({VarPop_checkbox: false}) And UpdateContext ({VarPop_VerRespostaCorreta: true}),
+                    Notify (
+                        "Resposta Errada!",
+                        NotificationType.Error,
+                        1900
+                    ) And UpdateContext ({VarPop_checkbox: false}) And UpdateContext ({VarPop_VerRespostaCorreta: true})
+                ) && Reset(CheckboxA_1) && Reset(CheckboxB_1) && Reset(CheckboxC_1) && Reset(CheckboxD_1) 
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_56 As button:
+            OnSelect: |-
+                =Reset(CheckboxA_1)&& Reset(CheckboxB_1)&& Reset(CheckboxC_1) &&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta20top2perg1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_18 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="Para melhorar o desempenho do carregamento de um formulário de aplicativo, você pode considerar os seguintes tipos de controle:
+                B. Formulário de visualização rápida: Este tipo de formulário é otimizado para carregar rapidamente, exibindo apenas as informações essenciais inicialmente e permitindo que os usuários acessem detalhes adicionais conforme necessário.
+                C. iFrame: Utilizar iFrames pode ajudar a carregar partes do formulário de forma assíncrona, melhorando a percepção de velocidade ao carregar diferentes seções do formulário separadamente.
+                D. Pesquisa: Implementar uma funcionalidade de pesquisa pode ajudar a reduzir a quantidade de dados carregados inicialmente, permitindo que os usuários filtrem e encontrem rapidamente as informações que precisam."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_18 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        CheckboxA_1 As checkbox:
+            Text: |+
+                ="A) Linha do tempo"
+                
+            Visible: =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =340
+            ZIndex: =9
+
+        CheckboxB_1 As checkbox:
+            Text: |+
+                =" B) Formulário de visualização rápida"
+                
+                
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =400
+            ZIndex: =10
+
+        CheckboxC_1 As checkbox:
+            Text: |+
+                ="C) iFrame"
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =460
+            ZIndex: =11
+
+        CheckboxD_1 As checkbox:
+            Text: |+
+                ="D) pesquisa "
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =520
+            ZIndex: =12
+

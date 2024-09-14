@@ -1,0 +1,149 @@
+pergunta25top2perg21 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_24 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_24 As label:
+            Font: =Font.Arial
+            Height: =323
+            Size: =20
+            Text: |-
+                ="Você está desenvolvendo um aplicativo baseado em modelo. O aplicativo usa dados de duas tabelas personalizadas. As tabelas têm uma relação pai-filho. O formulário de registro pai contém uma subgrade que exibe os registros filho.
+                Ao criar um novo registro filho a partir do formulário pai, os dados devem ser preenchidos automaticamente no formulário de registro filho para reduzir os erros de entrada de dados.
+                Você precisa implementar a solução.
+                O que você deve fazer?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =70
+            ZIndex: =1
+
+        Label2_24 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 25 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_16 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =194
+            Items: |-
+                =[
+                "A) Use um fluxo do Power Automate para ler dados do registro pai e atualizar o registro filho após a criação."
+                ,
+                "B)  Mapeie as colunas da tabela do registro pai para o registro filho."
+                ,
+                "C) Crie uma regra de negócios que defina os valores padrão nos campos de registro filho como valores do registro pai."
+                ,
+                "D) Inclua um formulário de exibição rápida no registro filho mostrando os dados do registro pai."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_72 As button:
+            OnSelect: |-
+                =Reset(Radio1_16)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta24top2perg19)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_73 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_16
+                .Selected.Value=
+                "B)  Mapeie as colunas da tabela do registro pai para o registro filho."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_74 As button:
+            OnSelect: |-
+                =Reset(Radio1_16)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta26top2perg23)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_24 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="Resposta correta: B 
+                
+                Uma subgrade existe em um formulário principal e permite que os usuários do aplicativo exibam dados em uma tabela do Dataverse, normalmente relacionados ao registro que está sendo revisado no momento."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_24 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_16)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

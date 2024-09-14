@@ -1,0 +1,144 @@
+pergunta41Cop As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_40 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label2_40 As label:
+            Font: =Font.Arial
+            Height: =42
+            Size: =20
+            Text: ="Pergunta 41 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_120 As button:
+            OnSelect: |-
+                =Reset(Radio2_4)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta40Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_121 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio2_4
+                .Selected.Value=
+                "B) Criar um conector personalizado para o serviço web externo e utilizar conectores padrão para o Dataverse.",
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_122 As button:
+            OnSelect: |-
+                =Reset(Radio2_4)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta42Cop)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_40 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =248
+            Text: |-
+                =" Criar um conector personalizado para o serviço web externo e utilizar conectores padrão para o Dataverse é a 
+                abordagem mais adequada porque permite uma integração eficiente e segura, aproveitando as capacidades específicas 
+                de cada fonte de dados. Os conectores personalizados podem ser configurados para lidar com autenticação, segurança 
+                e requisitos específicos do serviço web externo, enquanto os conectores padrão do Dataverse garantem uma integração 
+                robusta e otimizada com a plataforma Power Apps. Isso resulta em uma solução mais flexível, escalável e fácil de manter."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_40 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})
+                //&& Reset(Radio1_26)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        Label7_4 As label:
+            Height: =178
+            Size: =20
+            Text: ="Você está criando um aplicativo de modelo no Power Apps que precisa integrar dados de várias fontes, incluindo o Dataverse e um serviço web externo. Qual das seguintes abordagens é a mais adequada para garantir a integração eficiente dos dados?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =80
+            ZIndex: =9
+
+        Radio2_4 As radio:
+            Height: =213
+            Items: |+
+                =[
+                "A) Utilizar conectores padrão para integrar diretamente com o Dataverse e o serviço web externo",
+                "B) Criar um conector personalizado para o serviço web externo e utilizar conectores padrão para o Dataverse.",
+                "C) Utilizar um fluxo de trabalho no Power Automate para sincronizar os dados entre o Dataverse e o serviço web externo.",
+                "D) Exportar os dados do Dataverse e do serviço web externo para um arquivo CSV e importá-los manualmente no aplicativo." 
+                ] 
+                
+                
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =350
+            ZIndex: =10
+

@@ -1,0 +1,154 @@
+pergunta33Top2perg36 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_32 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_32 As label:
+            Font: =Font.Arial
+            Height: =245
+            Size: =20
+            Text: |-
+                ="Você desenvolve um aplicativo baseado em modelo para incluir um formulário contendo várias colunas. Dois grupos de usuários. denominado Grupo1 e Grupo2 acessará o formulário.Uma coluna contém dados confidenciais que não devem ser lidos pelo Grupo2. O grupo1 deve ser capaz de acessar a coluna.Você precisa impedir que os usuários do Group2 exibam os dados confidenciais.
+                O que você deve fazer?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =73
+            ZIndex: =1
+
+        Label2_32 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 33 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_22 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =204
+            Items: |+
+                =[
+                "A) Crie um direito de acesso para usuários no Grupo1 para conceder aos usuários acesso à coluna."
+                ,
+                "B) Crie vários formulários. Atribua um formulário contendo os dados confidenciais ao Grupo1. Atribua um formulário que não contenha os dados confidenciais ao Grupo2."
+                ,
+                "C) Use JavaScript para definir a visibilidade da coluna com base no grupo do usuário atual.."
+                ,
+                "D) Crie um perfil de segurança em nível de campo para usuários do Grupo1 para conceder aos usuários acesso à coluna."
+                ]
+                
+                
+                
+            PaddingBottom: =0
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_96 As button:
+            OnSelect: |-
+                =Reset(Radio1_22)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta32Top2perg35)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_97 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_22
+                .Selected.Value=
+                "D) Crie um perfil de segurança em nível de campo para usuários do Grupo1 para conceder aos usuários acesso à coluna."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_98 As button:
+            OnSelect: |-
+                =Reset(Radio1_22)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta34top2perg39)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_32 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="Para impedir que os usuários do Grupo2 exibam os dados confidenciais, a melhor abordagem seria 
+                
+                D. Criar um perfil de segurança em nível de campo para usuários do Grupo1 para conceder aos usuários acesso à coluna.
+                
+                Essa opção garante que apenas os usuários do Grupo1 possam acessar a coluna com dados confidenciais, enquanto os usuários do Grupo2 não terão permissão para visualizá-la. Isso é mais seguro e eficiente do que as outras opções, pois controla o acesso diretamente no nível dos dados.
+                "
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_32 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_22)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

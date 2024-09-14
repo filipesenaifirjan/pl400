@@ -1,0 +1,149 @@
+"'pergunta17#33' As screen":
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&&
+        UpdateContext({VarPop_VerRespostaCorreta: false})&& Reset(Radio1_11)
+
+    Container1_16 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_16 As label:
+            Font: =Font.Arial
+            Height: =232
+            Size: =20
+            Text: |-
+                ="Uma empresa projeta a integração de dados com um sistema externo usando tabelas virtuais.
+                 Você precisa implementar as tabelas virtuais.
+                 Solução: crie uma coluna calculada na tabela virtual.
+                 A solução atende ao objetivo?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_16 As label:
+            Font: =Font.Arial
+            Height: =39
+            Size: =20
+            Text: ="Pergunta 17 de 50"
+            Width: =356
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_11 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =214
+            Items: |-
+                =[
+                "A) Sim"
+                ,
+                "B) Não"
+                
+                ] 
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =380
+            ZIndex: =3
+
+        Button1_48 As button:
+            OnSelect: |-
+                =Reset(Radio1_11)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate('pergunta16#31')
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_49 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_11
+                .Selected.Value=
+                "B) Não"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_50 As button:
+            OnSelect: |-
+                =Reset(Radio1_11)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate('pergunta18#34')
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_16 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                =" Não, a solução não atende ao objetivo.
+                
+                Tabelas virtuais no Microsoft Dataverse são usadas para integrar dados de sistemas externos, e elas não armazenam dados diretamente no Dataverse. Em vez disso, elas fornecem uma visão dos dados que residem no sistema externo. Colunas calculadas, por outro lado, são usadas para realizar cálculos em dados armazenados no Dataverse.
+                Portanto, criar uma coluna calculada em uma tabela virtual não é uma solução adequada para a integração de dados com um sistema externo.
+                A resposta correta é: B. Não."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_16 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_11)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

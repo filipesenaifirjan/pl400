@@ -1,0 +1,184 @@
+pergunta23top2perg5 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&&UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_22 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_22 As label:
+            Font: =Font.Arial
+            Height: =248
+            Size: =20
+            Text: |-
+                ="Uma instituição financeira que tem um ambiente do Dynamics 365 Sales exige que o campo de saldo da conta da entidade de conta esteja visível apenas para usuários específicos.
+                Você precisa configurar o campo segurança para o campo de saldo da conta.
+                Quais são as três ações que você deve realizar? Cada resposta correta apresenta parte da solução.
+                NOTA: Cada seleção correta vale um ponto."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =50
+            ZIndex: =1
+
+        Label2_22 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 23 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_66 As button:
+            OnSelect: |-
+                =Reset(CheckboxA_2)&&
+                Reset(CheckboxB_2)&&
+                Reset(CheckboxC_2)&&
+                Reset(CheckboxD_2)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta22top2perg3)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_67 As button:
+            OnSelect: |-
+                =If (
+                    CheckboxD_2.Value And CheckboxB_2.Value And CheckboxE_3.Value,
+                    Notify (
+                        "Certa resposta!",
+                        NotificationType.Success,
+                        1900
+                    ) And UpdateContext ({VarPop_checkbox: false}) And UpdateContext ({VarPop_VerRespostaCorreta: true}),
+                    Notify (
+                        "Resposta Errada!",
+                        NotificationType.Error,
+                        1900
+                    ) And UpdateContext ({VarPop_checkbox: false}) And UpdateContext ({VarPop_VerRespostaCorreta: true})
+                ) && Reset(CheckboxA_2) && Reset(CheckboxB_2) && Reset(CheckboxC_2) && Reset(CheckboxD_2) && Reset(CheckboxE_3)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_68 As button:
+            OnSelect: |-
+                =Reset(CheckboxA_2)&& Reset(CheckboxB_2)&& Reset(CheckboxC_2) &&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})
+                &&
+                Navigate(pergunta24top2perg19)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_22 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =294
+            Text: |-
+                ="Para implementar a segurança em nível de campo, um administrador do sistema executa as seguintes tarefas.
+                1. Habilite a segurança de campo em um ou mais campos para uma determinada entidade.
+                2. Associe mais um perfil de segurança existente ou crie um ou mais novos perfis de segurança para conceder o acesso apropriado a usuários ou equipes específicos.
+                Um perfil de segurança determina o seguinte:
+                ✑ Permissões para os campos
+                ✑ seguros Usuários e Equipes
+                Um perfil de segurança pode ser configurado para conceder aos membros do usuário ou da equipe as seguintes permissões no nível do campo:
+                ✑ Leitura. Acesso somente leitura aos dados do campo.
+                ✑ Criar. Os usuários ou equipes nesse perfil podem adicionar dados a esse campo ao criar um registro.
+                ✑ Atualização. Os usuários ou equipes nesse perfil podem atualizar os dados do campo depois que ele for criado."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_22 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
+        CheckboxA_2 As checkbox:
+            Height: =42
+            Text: |+
+                ="A) Defina o campo como Somente leitura e publique a entidade"
+                
+            Visible: =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =320
+            ZIndex: =9
+
+        CheckboxB_2 As checkbox:
+            Height: =42
+            Text: |+
+                =" B) Defina a permissão de campo Permitir leitura para Sim e adicione os usuários à seção de membros"
+                
+                
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =380
+            ZIndex: =10
+
+        CheckboxC_2 As checkbox:
+            Text: |+
+                ="C) Criar um direito de acesso e adicionar os usuários específicos à função"
+                
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =440
+            ZIndex: =11
+
+        CheckboxD_2 As checkbox:
+            Text: |+
+                ="D) Habilite a segurança de campo e publique a entidade "
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =500
+            ZIndex: =12
+
+        CheckboxE_3 As checkbox:
+            Text: |+
+                ="E) Criar um perfil de segurança de campo "
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =560
+            ZIndex: =13
+

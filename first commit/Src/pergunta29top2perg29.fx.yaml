@@ -1,0 +1,145 @@
+pergunta29top2perg29 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_28 As groupContainer.manualLayoutContainer:
+        Height: =744
+        PaddingTop: =5
+        Width: =1338
+        X: =14
+        Y: =12
+        ZIndex: =1
+
+        Label1_28 As label:
+            Font: =Font.Arial
+            Height: =250
+            Size: =20
+            Text: ="O departamento de comunicação de uma empresa planeja adicionar uma página de pesquisa acessível ao público ao site público da empresa.Você deve adicionar a nova página de pesquisa ao site público da empresa e capturar dados da página em um ambiente do Microsoft Dataverse.As credenciais explícitas do usuário não devem ser necessárias para gravar dados de pesquisa no Dataverse.Você precisa implementar a autenticação.Qual mecanismo de autenticação você deve implementar?"
+            Width: =Parent.Width-30
+            X: =15
+            Y: =60
+            ZIndex: =1
+
+        Label2_28 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 29 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Radio1_19 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =200
+            Items: |-
+                =[
+                "A) ADFS."
+                ,
+                "B) Acesso condicional do Azure AD ."
+                ,
+                "C) Conta de convidado do Azure."
+                ,
+                "D) Segredo do cliente."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =3
+
+        Button1_84 As button:
+            OnSelect: |-
+                =Reset(Radio1_19)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta28top2perg26)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =320
+            Y: =678
+            ZIndex: =4
+
+        Button1_85 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_19
+                .Selected.Value=
+                "D) Segredo do cliente."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =332
+            X: =503
+            Y: =678
+            ZIndex: =5
+
+        Button1_86 As button:
+            OnSelect: |-
+                =Reset(Radio1_19)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta30Top2perg30)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =857
+            Y: =678
+            ZIndex: =6
+
+        Label3_28 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D. Segredo do cliente
+                
+                Para capturar dados da página de pesquisa pública e gravá-los no Microsoft Dataverse sem exigir credenciais explícitas do usuário, você deve usar o mecanismo de autenticação Segredo do cliente. Esse método permite que a aplicação se autentique no Dataverse usando um segredo do cliente, garantindo que os dados possam ser gravados de forma segura e sem a necessidade de intervenção do usuário."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_28 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_19)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
