@@ -119,10 +119,7 @@ pergunta2 As screen:
             FontWeight: =FontWeight.Semibold
             Height: =183
             Text: |-
-                ="C) Definição de OpenAPI
-                 D) Coleção D.Postman
-                  
-                 Definições OpenAPI ou coleções Postman podem ser usadas para descrever um conector personalizado."
+                ="Para atender aos requisitos da empresa de viagens no ambiente de CDS, você deve criar a entidade Região para rastrear as regiões visitadas, criar uma entidade de interseção chamada ContactRegion com relações N:1 para Contato e Região, e adicionar campos de pesquisa para Contato e Região, além de um campo de data para registrar a data da visita no formulário principal de ContactRegion. Essas ações permitirão registrar e rastrear eficientemente as viagens dos clientes."
             Visible: =VarPop_VerRespostaCorreta
             Width: =Parent.Width-30
             X: =15
