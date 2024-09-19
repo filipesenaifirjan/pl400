@@ -15,10 +15,15 @@ pergunta2 As screen:
             Height: =269
             Size: =20
             Text: |-
-                ="4) Uma empresa tem um aplicativo que fornece acesso à API. Você planeja se conectar à API de um aplicativo de tela usando um conector personalizado.Você precisa solicitar informações dos desenvolvedores da API para poder criar o conector personalizado.Quais são os dois tipos de arquivos que você pode usar? Cada resposta correta apresenta uma solução completa.NOTA: Cada seleção correta vale um ponto."
+                ="4) Uma empresa de viagens tem um ambiente de CDS (Common Data Service).
+                A empresa exige o seguinte:
+                ✑ Entidades personalizadas que rastreiam quais regiões os clientes viajaram.
+                As datas em que seus clientes viajaram para essas regiões.
+                Você precisa criar as entidades e relacionamentos para atender aos requisitos.
+                Quais são as três ações que você deve realizar? Cada resposta correta apresenta parte da solução."
             Width: =Parent.Width-30
-            X: =15
-            Y: =84
+            X: =16
+            Y: =15
             ZIndex: =1
 
         Label2_1 As label:
@@ -52,7 +57,7 @@ pergunta2 As screen:
             OnSelect: |-
                 =If
                 (
-                Checkbox1_3.Value And Checkbox1_2.Value
+                Checkbox1_14.Value And Checkbox1_3.Value And Checkbox1_2.Value
                 ,
                 Notify
                 (
@@ -81,7 +86,11 @@ pergunta2 As screen:
                 Reset(Checkbox1)&&
                 Reset(Checkbox1_1)&&
                 Reset(Checkbox1_2)&&
-                Reset(Checkbox1_3)
+                Reset(Checkbox1_3) &&
+                Reset(Checkbox1_14)&&
+                Reset(Checkbox1_13)&&
+                Reset(Checkbox1_15)&&
+                Reset(Checkbox1_16)
             RadiusBottomLeft: =0
             RadiusBottomRight: =0
             RadiusTopLeft: =0
@@ -133,41 +142,81 @@ pergunta2 As screen:
 
         Checkbox1 As checkbox:
             Text: |
-                =" A) YAML"
+                =" A) Crie uma relação N:N de Contato para a entidade Região."
             Visible: =VarPop_checkbox
-            Width: =400
-            X: =30
-            Y: =360
+            Width: =1280
+            X: =29
+            Y: =262
             ZIndex: =9
 
         Checkbox1_1 As checkbox:
             Text: |+
-                ="B) WSDL"
+                ="B) Crie uma relação 1:N da entidade de interseção ContactRegion e da Região."
                 
             Visible: |
                 =VarPop_checkbox
-            Width: =400
-            X: =30
-            Y: =420
+            Width: =1280
+            X: =29
+            Y: =309
             ZIndex: =10
 
         Checkbox1_2 As checkbox:
             Text: |
-                ="C) Definição de OpenAPI"
+                ="C) Crie uma entidade de interseção chamada ContactRegion e crie relações 1:N para Contact e Region."
             Visible: |
                 =VarPop_checkbox
-            Width: =400
-            X: =30
-            Y: =480
+            Width: =1280
+            X: =29
+            Y: =359
             ZIndex: =11
 
         Checkbox1_3 As checkbox:
             Text: |
-                ="D) Coleção de carteiro (Postman) "
+                ="D) No formulário principal de ContactRegion, adicione campos de pesquisa para Contato e Região e um campo de data para a data da visita. "
             Visible: |
                 =VarPop_checkbox
-            Width: =400
-            X: =30
-            Y: =540
+            Width: =1280
+            X: =29
+            Y: =409
             ZIndex: =12
+
+        Checkbox1_13 As checkbox:
+            Text: |
+                ="E) Crie uma relação 1:N de Contato para a entidade Região. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =1280
+            X: =30
+            Y: =459
+            ZIndex: =13
+
+        Checkbox1_14 As checkbox:
+            Text: |
+                ="F) Crie a entidade Região. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =1280
+            X: =30
+            Y: =509
+            ZIndex: =14
+
+        Checkbox1_15 As checkbox:
+            Text: |
+                ="G) No formulário principal de ContactRegion, adicione uma subgrade para exibir as informações do país. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =1280
+            X: =30
+            Y: =559
+            ZIndex: =15
+
+        Checkbox1_16 As checkbox:
+            Text: |
+                ="H) Crie uma entidade de interseção chamada ContactRegion e crie relações N:1 para Contact e Region. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =1280
+            X: =30
+            Y: =609
+            ZIndex: =16
 
